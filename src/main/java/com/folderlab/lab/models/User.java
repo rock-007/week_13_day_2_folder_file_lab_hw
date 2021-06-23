@@ -1,5 +1,9 @@
 package com.folderlab.lab.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +21,8 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-
+    @JsonBackReference
+    @JsonIgnoreProperties({"user"}) // this will ignore the property inside the folder having user:{....}
     @OneToMany(mappedBy = "user")
     private List<Folder> folders;
 

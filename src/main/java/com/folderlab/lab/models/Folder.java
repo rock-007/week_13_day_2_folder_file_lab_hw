@@ -1,6 +1,7 @@
 package com.folderlab.lab.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -16,12 +17,15 @@ public class Folder {
     private Long id;
     @Column(name = "title")
     private String title;
+
+//    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     @JsonIgnoreProperties({"folders"})
     private User user;
 
-    @ManyToMany
+//    @JsonBackReference
+     @ManyToMany
     @JoinTable(name = "files_and_folders", joinColumns = {@JoinColumn(name = "folders_id", nullable = false, updatable = false)}, inverseJoinColumns = {@JoinColumn(name = "files_id", nullable = false, updatable = false)})
     private List<File> files;
 

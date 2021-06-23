@@ -56,4 +56,9 @@ public class File {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public void addFolder(Folder folder) {
+        System.out.println(folder);
+        this.folders.add(folder);
+    }
 }
